@@ -22,25 +22,23 @@
     margin-right= 0;
     modules-left= [
         "custom/launcher" 
-        "custom/playerctl#backward" 
-        "custom/playerctl#play" 
-        "custom/playerctl#foward" 
+        "cpu" 
+        "memory" 
+        "custom/playerctl#play"
+        "tray" 
     ];
     modules-center= [
         "hyprland/workspaces"
     ];
     modules-right= [
-        "tray" 
+        "backlight"
+        "pulseaudio"
         "battery"
-        "cpu"
-        "memory"
-        "disk"
-        "pulseaudio" 
-        "network"
         "clock" 
+        "custom/power"
     ];
     clock= {
-        format = " {:%H:%M}";
+        format = "{: %I:%M %p   %d/%m/%Y}";
         tooltip= "true";
         tooltip-format= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         format-alt= " {:%d/%m}";
@@ -88,12 +86,14 @@
     memory= {
         format= "󰟜 {}%";
         format-alt= "󰟜 {used} GiB"; # 
-        interval= 2;
+        interval= 30;
+        max-length= 10;
     };
     cpu= {
         format= "  {usage}%";
         format-alt= "  {avg_frequency} GHz";
-        interval= 2;
+        interval= 15;
+        max-length= 10;
     };
     disk = {
         # path = "/";
@@ -109,6 +109,7 @@
     };
     battery = {
         states = {
+          good = 95;
           warning = 30;
           critical = 15;
         };
@@ -116,26 +117,36 @@
         format-charging = "󰂄 {capacity}%";
         format-plugged = "󱘖 {capacity}%";
         format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+        format-alt = "{time} {icon}";
         on-click = "";
         tooltip = true;
-        interval = 60;
+        interval = 30;
         bat = "BAT1";
     };
     tray= {
         icon-size= 20;
-        spacing= 8;
+        spacing= 10;
     };
     pulseaudio= {
         format= "{icon} {volume}%";
         format-muted= "󰖁 ";
         format-icons= {
-            default= [" "];
+            default= ["" " "];
         };
         scroll-step= 5;
         on-click= "pamixer -t";
     };
+    "custom/power"= {
+    	format= " 󰐥 ";
+    	on-click= "pkill wofi || shutdown-script";
+    };
+    "backlight"= {
+    	tooltip= false;
+    	format= " {}%";
+    	interval= 1;
+    };
     "custom/launcher"= {
-        format= "";
+        format= " ";
         on-click= "pkill wofi || wofi --show drun";
         on-click-right= "pkill wofi || wallpaper-picker"; 
         tooltip= "false";
