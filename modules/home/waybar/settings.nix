@@ -137,7 +137,7 @@
         on-click= "pamixer -t";
     };
     "custom/power"= {
-    	format= " 󰐥 ";
+    	format= " ";
     	on-click= "pkill wofi || shutdown-script";
     };
     "backlight"= {
