@@ -1,4 +1,4 @@
-{ pkgs, inputs, username, ...}:
+{ pkgs, inputs, username, nix-colors, ...}:
 let
   packages = with pkgs; [
     fish
@@ -9,7 +9,7 @@ in
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs username; };
+    extraSpecialArgs = { inherit inputs username nix-colors; };
     users.${username} = {
       imports = [ (import ./../home) ];
       home.username = "${username}";

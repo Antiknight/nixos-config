@@ -1,4 +1,4 @@
-{ ... }:
+{config, nix-colors, ...}:
 let
   color = (import ../../variables/colors.nix);
   window_manager = (import ../../variables/window_manager.nix);
@@ -9,7 +9,6 @@ in
       $mainMod = SUPER
 
       monitor=,preferred,auto,1
-#      monitor=,1920x1080,auto,auto
 
       # autostart
       exec-once = systemctl --user import-environment &
@@ -41,15 +40,32 @@ in
         focus_on_activate = true
       }
 
-      general {
-        layout = dwindle
+      $c0 = rgba(${config.colorscheme.colors.base00}FF)
+      $c1 = rgba(${config.colorscheme.colors.base01}FF)
+      $c2 = rgba(${config.colorscheme.colors.base02}FF)
+      $c3 = rgba(${config.colorscheme.colors.base03}FF)
+      $c4 = rgba(${config.colorscheme.colors.base04}FF)
+      $c5 = rgba(${config.colorscheme.colors.base05}FF)
+      $c6 = rgba(${config.colorscheme.colors.base06}FF)
+      $c7 = rgba(${config.colorscheme.colors.base07}FF)
+      $c8 = rgba(${config.colorscheme.colors.base08}FF)
+      $c9 = rgba(${config.colorscheme.colors.base09}FF)
+      $ca = rgba(${config.colorscheme.colors.base0A}FF)
+      $cb = rgba(${config.colorscheme.colors.base0B}FF)
+      $cc = rgba(${config.colorscheme.colors.base0C}FF)
+      $cd = rgba(${config.colorscheme.colors.base0D}FF)
+      $ce = rgba(${config.colorscheme.colors.base0E}FF)
+      $cf = rgba(${config.colorscheme.colors.base0F}FF)
 
-        gaps_in = 5
-        gaps_out = 10
-        border_size = 2
-        col.active_border = rgb(cba6f7) rgb(94e2d5) 45deg
-        col.inactive_border = 0x00000000
-        border_part_of_window = false
+      general {
+        gaps_in = 10
+        gaps_out = 20
+        border_size = 0
+        resize_on_border = true
+        layout = dwindle
+        cursor_inactive_timeout = 10
+        col.active_border = $c0 $ca $c3 $c2 $c1 $c0 45deg
+        col.inactive_border = $c0 $c1 0deg
       }
 
       xwayland {
@@ -58,12 +74,13 @@ in
 
       dwindle {
         no_gaps_when_only = false
-        force_split = 0
+        force_split = 2
         special_scale_factor = 1.0
         split_width_multiplier = 1.0
         use_active_for_splits = true
         pseudotile = yes
         preserve_split = yes
+        smart_resizing = true
       }
 
       master {
@@ -73,60 +90,49 @@ in
       }
 
       decoration {
-        rounding = 12
+        rounding = 10
         
-        active_opacity = 0.90;
-        inactive_opacity = 0.90;
-        fullscreen_opacity = 1.0;
+        drop_shadow = 1
+        shadow_range = 8
+        shadow_render_power = 1
+        shadow_offset = 4 4 # 10 10
+        col.shadow = $c0
+        col.shadow_inactive= $c0
 
+        active_opacity = 1
+        inactive_opacity = .90
+        dim_inactive = true
+        dim_strength = 0.1
         blur {
-          enabled = true
-
-          size = 3
-          passes = 3
-          
-          brightness = 1
-          contrast = 1.300000
-          ignore_opacity = true
-          noise = 0.011700
-          
-          new_optimizations = true
-          
-          xray = true
+            enabled = true
+            size = 9
+            passes = 3
+            noise = 0
+            brightness = 0.5
+            new_optimizations = true
         }
-
-        drop_shadow = true;
-        
-        shadow_ignore_window = true;
-        shadow_offset = 0 2
-        shadow_range = 20
-        shadow_render_power = 3
-        col.shadow = rgba(00000055)
       }
 
 
       animations {
-        enabled = true
-        
-        bezier = fluent_decel, 0, 0.2, 0.4, 1
-        bezier = easeOutCirc, 0, 0.55, 0.45, 1
-        bezier = easeOutCubic, 0.33, 1, 0.68, 1
-        bezier = easeinoutsine, 0.37, 0, 0.63, 1
+          enabled = true
+          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+          
+#          bezier = overshot, 0.34, 1.56, 0.64, 1
+#          bezier = smoothOut, 0.36, 0, 0.66, -0.56
+#          bezier = smoothIn, 0.25, 1, 0.5, 1
+#          bezier = liner, 1, 1, 1, 1
+#          bezier = cubic, 0.785, 0.135, 0.15, 0.86
+#          bezier = snappy, 0.51, 0.93, 0, 1
 
-        # Windows
-        animation = windowsIn, 1, 3, easeOutCubic, popin 30% # window open
-        animation = windowsOut, 1, 3, fluent_decel, popin 70% # window close.
-        animation = windowsMove, 1, 2, easeinoutsine, slide # everything in between, moving, dragging, resizing.
-        
-        # Fade
-        animation = fadeIn, 1, 3, easeOutCubic  # fade in (open) -> layers and windows
-        animation = fadeOut, 1, 2, easeOutCubic # fade out (close) -> layers and windows
-        animation = fadeSwitch, 0, 1, easeOutCirc # fade on changing activewindow and its opacity
-        animation = fadeShadow, 1, 10, easeOutCirc # fade on changing activewindow for shadows
-        animation = fadeDim, 1, 4, fluent_decel # the easing of the dimming of inactive windows
-        animation = border, 1, 2.7, easeOutCirc # for animating the border's color switch speed
-        animation = borderangle, 1, 30, fluent_decel, once # for animating the border's gradient angle - styles: once (default), loop
-        animation = workspaces, 1, 4, easeOutCubic, fade # styles: slide, slidevert, fade, slidefade, slidefadevert
+          animation = windows, 1, 7, myBezier
+          animation = windowsOut, 1, 7, default, popin 80%
+#          animation = windowsMove, 1, 7, snappy
+          animation = fade, 1, 7, default
+#          animation = fadeDim, 1, 5, smoothIn
+          animation = workspaces, 1, 6, default
+          animation = border, 1, 10, default
+          animation = borderangle, 1, 8, default
       }
 
 

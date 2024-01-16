@@ -1,4 +1,4 @@
-{inputs, username, ...}: {
+{inputs, username, config, nix-colors, ...}: {
   imports =
        [(import ./waybar)]
     ++ [(import ./firefox)]
@@ -22,5 +22,9 @@
     ++ [(import ./scripts)]         # personal scripts
     ++ [(import ./starship)]
     ++ [(import ./nvim)]
-    ++ [(import ./package)];
+    ++ [(import ./package)]
+    ++ [nix-colors.homeManagerModules.default];
+
+    colorScheme = nix-colors.colorSchemes.tokyo-city-terminal-dark;
+
 }
