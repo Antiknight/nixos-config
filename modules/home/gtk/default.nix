@@ -31,15 +31,15 @@
       };
     };
     cursorTheme = {
-      name = "Nordzy-cursors";
-      package = pkgs.nordzy-cursor-theme;
+      name = "catppuccin-cursors.macchiatoPink";
+      package = pkgs.catppuccin-cursors.mochaDark;
       size = 22;
     };
   };
   
   home.pointerCursor = {
-    name = "Nordzy-cursors";
-    package = pkgs.nordzy-cursor-theme;
+    name = "catppuccin-cursors.mochaDark";
+    package = pkgs.catppuccin-cursors.mochaDark;
     size = 22;
   };
 }
