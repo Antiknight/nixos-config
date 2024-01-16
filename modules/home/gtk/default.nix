@@ -6,6 +6,7 @@
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     pkgs.twemoji-color-font
     pkgs.noto-fonts-emoji
+    pkgs.cantarell-fonts
   ];
 
   gtk = {
@@ -13,13 +14,6 @@
     font = {
       name = "JetBrainsMono Nerd Font";
       size = 11;
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "lavender";
-      };
     };
     theme = {
       name = "Catppuccin-Mocha-Compact-Lavender-Dark";
@@ -31,15 +25,15 @@
       };
     };
     cursorTheme = {
-      name = "catppuccin-cursors.macchiatoPink";
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 22;
+      name = "bibata-modern-ice";
+      package = pkgs.bibata-cursors;
+      size = 20;
     };
   };
   
   home.pointerCursor = {
-    name = "catppuccin-cursors.mochaDark";
-    package = pkgs.catppuccin-cursors.mochaDark;
-    size = 22;
+    name = "bibata-modern-ice";
+    package = pkgs.bibata-cursors;
+    size = 20;
   };
 }

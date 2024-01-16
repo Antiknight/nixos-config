@@ -8,7 +8,7 @@ in
     extraConfig = "
       $mainMod = SUPER
 
-      monitor=,preferred,auto,1
+      monitor=,highres,auto,1
 
       # autostart
       exec-once = systemctl --user import-environment &
@@ -18,15 +18,58 @@ in
       exec-once = wl-paste --primary --watch wl-copy --primary --clear
       exec-once = swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &
       exec-once = sleep 1 && swaylock
-      exec-once = hyprctl setcursor Nordzy-cursors 22 &
       exec-once = waybar &
       exec-once = mako &
+
+      
+      #█▀▀ █░█ █▀█ █▀ █▀█ █▀█
+      #█▄▄ █▄█ █▀▄ ▄█ █▄█ █▀▄
+      
+      #env = XCURSOR_THEME,Bibata-Modern-Ice
+      #env = XCURSOR_SIZE,20
+      
+      exec = hyprctl setcursor Bibata-Modern-Ice 20
+      exec = gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
+      exec = gsettings set org.gnome.desktop.interface cursor-size 20
+      
+      
+      #█▀▀ █▀█ █▄░█ ▀█▀
+      #█▀░ █▄█ █░▀█ ░█░
+      
+      exec = gsettings set org.gnome.desktop.interface font-name 'Cantarell 10'
+      exec = gsettings set org.gnome.desktop.interface document-font-name 'Cantarell 10'
+      exec = gsettings set org.gnome.desktop.interface monospace-font-name 'CaskaydiaCove Nerd Font Mono 9'
+      exec = gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
+      exec = gsettings set org.gnome.desktop.interface font-hinting 'full'
+
+      
+      #█▀ █▀█ █▀▀ █▀▀ █ ▄▀█ █░░
+      #▄█ █▀▀ ██▄ █▄▄ █ █▀█ █▄▄
+
+      exec = gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
+      exec = gsettings set org.gnome.desktop.interface gtk-theme 'Decay-Green'
+      exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+      
+      decoration {
+          dim_special = 0.3
+          blur {
+              special = true
+          }
+      }
+
+      
+      
 
       input {
         kb_layout = fo
         numlock_by_default = true
         follow_mouse = 1
         sensitivity = 0
+      }
+
+      gestures {
+      	workspace_swipe = true
+      	workspace_swipe_fingers = 3
       }
 
       misc {
@@ -58,14 +101,20 @@ in
       $cf = rgba(${config.colorscheme.colors.base0F}FF)
 
       general {
-        gaps_in = 10
-        gaps_out = 20
-        border_size = 0
-        resize_on_border = true
-        layout = dwindle
-        cursor_inactive_timeout = 10
-        col.active_border = $c0 $ca $c3 $c2 $c1 $c0 45deg
-        col.inactive_border = $c0 $c1 0deg
+          gaps_in = 3
+          gaps_out = 8
+          border_size = 2
+          col.active_border = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
+          col.inactive_border = rgba(86aaeccc) rgba(93cee9cc) 45deg
+          layout = dwindle
+          resize_on_border = true
+      }
+
+      group {
+          col.border_active = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
+          col.border_inactive = rgba(86aaeccc) rgba(93cee9cc) 45deg
+          col.border_locked_active = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
+          col.border_locked_inactive = rgba(86aaeccc) rgba(93cee9cc) 45deg
       }
 
       xwayland {
@@ -90,49 +139,34 @@ in
       }
 
       decoration {
-        rounding = 10
-        
-        drop_shadow = 1
-        shadow_range = 8
-        shadow_render_power = 1
-        shadow_offset = 4 4 # 10 10
-        col.shadow = $c0
-        col.shadow_inactive= $c0
-
-        active_opacity = 1
-        inactive_opacity = .90
-        dim_inactive = true
-        dim_strength = 0.1
-        blur {
-            enabled = true
-            size = 9
-            passes = 3
-            noise = 0
-            brightness = 0.5
-            new_optimizations = true
-        }
+          rounding = 10
+          drop_shadow = false
+      
+          blur {
+              enabled = yes
+              size = 5
+              passes = 4
+              new_optimizations = on
+              ignore_opacity = on
+              xray = true
+          }
       }
 
 
       animations {
-          enabled = true
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-          
-#          bezier = overshot, 0.34, 1.56, 0.64, 1
-#          bezier = smoothOut, 0.36, 0, 0.66, -0.56
-#          bezier = smoothIn, 0.25, 1, 0.5, 1
-#          bezier = liner, 1, 1, 1, 1
-#          bezier = cubic, 0.785, 0.135, 0.15, 0.86
-#          bezier = snappy, 0.51, 0.93, 0, 1
-
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-#          animation = windowsMove, 1, 7, snappy
-          animation = fade, 1, 7, default
-#          animation = fadeDim, 1, 5, smoothIn
-          animation = workspaces, 1, 6, default
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
+        enabled = yes
+        bezier = wind, 0.05, 0.9, 0.1, 1.05
+        bezier = winIn, 0.1, 1.1, 0.1, 1.1
+        bezier = winOut, 0.3, -0.3, 0, 1
+        bezier = liner, 1, 1, 1, 1
+        animation = windows, 1, 6, wind, slide
+        animation = windowsIn, 1, 6, winIn, slide
+        animation = windowsOut, 1, 5, winOut, slide
+        animation = windowsMove, 1, 5, wind, slide
+        animation = border, 1, 1, liner
+        animation = borderangle, 1, 30, liner, loop
+        animation = fade, 1, 10, default
+        animation = workspaces, 1, 5, wind
       }
 
 

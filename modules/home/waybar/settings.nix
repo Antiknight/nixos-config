@@ -1,155 +1,177 @@
-{ 
-    custom ? {
-        font = "JetBrainsMono Nerd Font";
-        fontsize = "12";
-        primary_accent = "cba6f7";
-        secondary_accent = "89b4fa";
-        tertiary_accent = "f5f5f5";
-        background = "11111B";
-        opacity = ".85";
-        cursor = "Numix-Cursor";
-    },
-    ... 
-}:
+{inputs, username, config, nix-colors, ...}:
 {
-  programs.waybar.settings.mainBar = {
-    position= "top";
-    layer= "top";
-    # height= 15;
-    margin-top= 0;
-    margin-bottom= 0;
-    margin-left= 0;
-    margin-right= 0;
-    modules-left= [
-        "custom/launcher" 
-        "cpu" 
-        "memory" 
-        "custom/playerctl#play"
-        "tray" 
-    ];
-    modules-center= [
-        "hyprland/workspaces"
-    ];
-    modules-right= [
-        "backlight"
-        "pulseaudio"
-        "battery"
-        "clock" 
-        "custom/power"
-    ];
-    clock= {
-        format = "{: %I:%M %p   %d/%m/%Y}";
-        tooltip= "true";
-        tooltip-format= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        format-alt= " {:%d/%m}";
-    };
-    "wlr/workspaces"= {
-        active-only= false;
-        all-outputs= false;
-        disable-scroll= false;
-        on-scroll-up= "hyprctl dispatch workspace e-1";
-        on-scroll-down= "hyprctl dispatch workspace e+1";
-        format = "{name}";
-        on-click= "activate";
-        format-icons= {
-            urgent= "";
-            active= "";
-            default = "";
-            sort-by-number= true;
-        };
-    };
-    "custom/playerctl#backward"= {
-        format= "󰙣 "; 
-        on-click= "playerctl previous";
-        on-scroll-up = "playerctl volume .05+";
-        on-scroll-down = "playerctl volume .05-";
-    };
-    "custom/playerctl#play"= {
-        format= "{icon}";
-        return-type= "json";
-        exec= "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
-        on-click= "playerctl play-pause";
-        on-scroll-up = "playerctl volume .05+";
-        on-scroll-down = "playerctl volume .05-";
-        format-icons= {
-            Playing = "<span>󰏥 </span>";
-            Paused = "<span> </span>";
-            Stopped = "<span> </span>";
-        };
-    };
-    "custom/playerctl#foward"= {
-        format= "󰙡 ";
-        on-click= "playerctl next";
-        on-scroll-up = "playerctl volume .05+";
-        on-scroll-down = "playerctl volume .05-";
-    };
-    memory= {
-        format= "󰟜 {}%";
-        format-alt= "󰟜 {used} GiB"; # 
-        interval= 30;
-        max-length= 10;
-    };
-    cpu= {
-        format= "  {usage}%";
-        format-alt= "  {avg_frequency} GHz";
-        interval= 15;
-        max-length= 10;
-    };
-    disk = {
-        # path = "/";
-        format = "󰋊 {percentage_used}%";
-        interval= 60;
-    };
-    network = {
-        format-wifi = "  {signalStrength}%";
-        format-ethernet = "󰀂 ";
-        tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
-        format-linked = "{ifname} (No IP)";
-        format-disconnected = "󰖪 ";
-    };
-    battery = {
-        states = {
-          good = 95;
-          warning = 30;
-          critical = 15;
-        };
-        format = "{icon} {capacity}%";
-        format-charging = "󰂄 {capacity}%";
-        format-plugged = "󱘖 {capacity}%";
-        format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
-        format-alt = "{time} {icon}";
-        on-click = "";
-        tooltip = true;
-        interval = 30;
-        bat = "BAT1";
-    };
-    tray= {
-        icon-size= 20;
-        spacing= 10;
-    };
-    pulseaudio= {
-        format= "{icon} {volume}%";
-        format-muted= "󰖁 ";
-        format-icons= {
-            default= ["" " "];
-        };
-        scroll-step= 5;
-        on-click= "pamixer -t";
-    };
-    "custom/power"= {
-    	format= " ";
-    	on-click= "pkill wofi || shutdown-script";
-    };
-    "backlight"= {
-    	tooltip= false;
-    	format= " {}%";
-    	interval= 1;
-    };
-    "custom/launcher"= {
-        format= " ";
-        on-click= "pkill wofi || wofi --show drun";
-        on-click-right= "pkill wofi || wallpaper-picker"; 
-        tooltip= "false";
-    };
+  home.file.".config/waybar/config.jsonc" = {
+    text = ''
+      {
+        "layer": "top",
+        // "output": [],
+        "position": "top",
+        "height": 36,
+        // "width": 900,
+        // "margin": "",
+        "margin-top": 10,
+        "margin-bottom": 0,
+        "margin-left": 10,
+        "margin-right": 10,
+        "spacing": 10,
+        "gtk-layer-shell": true,
+        "border-radius": 10,
+
+        "clock": {
+          "interval": 1,
+          "format": " {:%I:%M} ",
+          "format-alt": " {:%A, %d %B} ",
+          // "on-click": "gnome-calendar",
+          "tooltip": true,
+          "tooltip-format": "{calendar}",
+          "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "format": {
+              "today": "<span color='#${config.colorScheme.colors.base0F}'>{}</span>"
+            }
+          }
+        },
+        "modules-left": [
+          "clock",
+          "hyprland/workspaces",
+          "custom/notification"
+        ],
+        "modules-center": [
+          "hyprland/submap",
+          "hyprland/window"
+        ],
+        "modules-right": [
+
+          "cpu",
+          "memory",
+          // "network#wlp2s0",
+          // "bluetooth",
+          "backlight",
+          // "pulseaudio#microphone",
+          "pulseaudio#audio",
+          "battery",
+
+          "tray"
+        ],
+
+        "hyprland/workspaces": {
+          "format": " {icon} ",
+          "format-icons": {
+            "default": "󰄰",
+            "active": ""
+          },
+          "on-click": "activate"
+        },
+
+        "hyprland/submap": {
+          "format": "{}",
+          "tooltip": false
+        },
+
+        "hyprland/window": {
+          "format": " {} ",
+          "separate-outputs": false
+        },
+
+        "tray": {
+          "icon-size": 15,
+          "spacing": 10
+        },
+
+        "cpu": {
+          "format": " {usage}%",
+          "on-click": "",
+          "tooltip": false
+        },
+
+        "memory": {
+          "format": "󰍛 {used:0.1f}GB ({percentage}%) / {total:0.1f}GB",
+          "on-click": "",
+          "tooltip": false
+        },
+
+        "backlight": {
+          "format": " {icon} {percent} ",
+          "format-icons": [
+            "󰃟"
+          ],
+          "on-scroll-up": "brightnessctl set +1%",
+          "on-scroll-down": "brightnessctl set 1%-",
+          "on-click": "brightnessctl set 0",
+          "tooltip": false
+        },
+
+      	"pulseaudio#audio": {
+      		"format": " {icon} {volume:2} ",
+      		"format-bluetooth": " {icon} {volume}%  ",
+      		"format-muted": " {icon} Muted ",
+      		"format-icons": {
+      			"headphones": "",
+      			"default": [
+      				"",
+      				""
+      			]
+      		},
+      		"scroll-step": 5,
+      		"on-click": "pavucontrol",
+      		"on-click-right": "pamixer -t"
+      	},
+
+        "network#wlp2s0": {
+          "interval": 1,
+          "interface": "wlan0",
+          "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+          ],
+          "format-wifi": " {icon}  ", // added multiple spaces to the right, was not aligning center correctly, still is not :(
+          "format-disconnected": "󰤮",
+          "on-click": "iwgtk",
+          "tooltip": true,
+          "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}"
+        },
+
+        "bluetooth": {
+          "format-disabled": " 󰂲 ",
+          "format-off": " 󰂲 ",
+          "format-on": " 󰂯 ",
+          "format-connected": " 󰂯 ",
+          "format-connected-battery": " 󰂯 ",
+          "tooltip-format-connected": " {device_alias} 󰂄{device_battery_percentage} ",
+          "on-click": "blueberry",
+          "tooltip": true
+        },
+
+        "battery": {
+          "states": {
+            "warning": 20,
+            "critical": 10
+          },
+
+          "format": " {icon} {capacity} ",
+          "format-charging": " 󰂄 {capacity} ",
+          "format-plugged": " 󱘖 {capacity} ",
+          "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+          ],
+          "on-click": "",
+          "tooltip": false
+        }
+      }
+
+    '';
   };
 }

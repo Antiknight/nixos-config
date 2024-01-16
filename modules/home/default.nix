@@ -25,6 +25,6 @@
     ++ [(import ./package)]
     ++ [nix-colors.homeManagerModules.default];
 
-    colorScheme = nix-colors.colorSchemes.tokyo-city-terminal-dark;
+    colorScheme = nix-colors.colorSchemes.solarflare;
 
 }
