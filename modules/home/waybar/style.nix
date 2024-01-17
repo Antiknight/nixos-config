@@ -1,202 +1,160 @@
 {inputs, username, config, nix-colors, ...}:
 {
   programs.waybar.style = ''
-      * {
-          font-size: 14px;
-          font-family: "Hack Nerd Font";
-          border-radius: 10;
-      }
+* {
+    font-family: 'Iosevka Nerd Font';
+    font-size: 13px;
+  /*font-weight: thin;*/
+    border-radius: 0px;
+    margin: 0;
+}
 
-      window#waybar {
-        background-color: transparent;
-        color: #${config.colorScheme.colors.base05};
-        /* border-radius: 20px; */
-        /* border: 1px solid #${config.colorScheme.colors.base00}; */
-      }
+window#waybar {
+    background-color: transparent;
+    border-radius: 10px;
+    padding-top: 0px;
+    margin-top: 0;
+}
 
-      tooltip {
-        background: #${config.colorScheme.colors.base00};
-        border: 1px solid #${config.colorScheme.colors.base05};
-        border-radius: 10px;
-      }
-      tooltip label {
-        color: #${config.colorScheme.colors.base05};
-      }
+.modules-right {
+    font-size: 10px;
+    background-color: #1b1a1d;
+    border-radius: 10px;
+    padding: 0;
+    margin: 5px 0 5px 0;
+}
 
-      #workspaces {
-        background-color: transparent;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
+.modules-left {
+    margin-left: 0.1rem;
+    background-color: #1b1a1d;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 1px 0px;
+    border-radius: 10px;
+}
 
-      #workspaces button {
-        background-color: #${config.colorScheme.colors.base00};
-        color: #${config.colorScheme.colors.base05};
-        border-radius: 10px;
-        transition: all 0.3s ease;
-        margin-right: 10;
-      }
+.modules-center {
+    padding: 0px;
+    margin: 5px 0 5px 0;
+}
 
-      #workspaces button:hover {
-        box-shadow: inherit;
-        text-shadow: inherit;
-        background-color: #${config.colorScheme.colors.base04};
-        color: #${config.colorScheme.colors.base09};
-        min-width: 30px;
-        transition: all 0.3s ease;
-      }
+tooltip {
+    background: #1b1a1d;
+    border-radius: 10px;
+}
 
-      #workspaces button.focused,
-      #workspaces button.active {
-        background-color: #${config.colorScheme.colors.base02};
-        color: #${config.colorScheme.colors.base09};
-        min-width: 30px;
-        transition: all 0.3s ease;
-        animation: colored-gradient 10s ease infinite;
-      }
+tooltip label {
+    color: #ebdbb2;
+    background-color: #1b1a1d;
+    border-radius: 10px;
+}
 
-      /* #workspaces button.focused:hover,
-      #workspaces button.active:hover {
-        background-color: #${config.colorScheme.colors.base09};
-        transition: all 1s ease;
-      } */
+tooltip * {
+    border-radius: 10px;
+}
 
-      #workspaces button.urgent {
-        background-color: #${config.colorScheme.colors.base0F};
-        color: #${config.colorScheme.colors.base00};
-        transition: all 0.3s ease;
-      }
+#workspaces {
+    margin: 1px;
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+}
 
-      /* #workspaces button.hidden {} */
+#workspaces button {
+    margin: 0;
+    color: #c3b28b;
+    font-weight: bolder;
+    font-style: normal;
+    margin: 0.2rem 0.1rem;
+    border-radius: 20px;
+}
 
-      #taskbar {
-        border-radius: 8px;
-        margin-top: 4px;
-        margin-bottom: 4px;
-        margin-left: 1px;
-        margin-right: 1px;
-      }
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background-color: #c3b28b;
+    color: #1b1a1d;
+    border-radius: 10px;
+}
 
-      #taskbar button {
-        color: #${config.colorScheme.colors.base05};
-        padding: 1px 8px;
-        margin-left: 1px;
-        margin-right: 1px;
-      }
+#workspaces button.active {
+    color: #313036;
+    background-color: rgba(166, 145, 96, 0.9);
+    transition: all 0.1s ease-in-out;
+    border-radius: 20px;
+}
 
-      #taskbar button:hover {
-        background: transparent;
-        border: 1px solid #${config.colorScheme.colors.base02};
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        animation: colored-gradient 10s ease infinite;
-      }
+#clock {
+    font-family: 'Iosevka Nerd Font';
+    color: rgb(195, 178, 139);
+    background-color: #1b1a1d;
+    padding: 0 1.5em 0 1.5em;
+    border-radius: 10px 10px 10px 10px;
+}
 
-      /* #taskbar button.maximized {} */
+#memory {
+    color: #a9b665;
+    padding: 0 0.3em 0 0.5em;
+    border-radius: 10px 0 0 10px;
+}
 
-      /* #taskbar button.minimized {} */
+#wireplumber,
+#wireplumber.muted {
+    margin: 0;
+    padding: 0 0.5em 0 0.4em;
+    color: #7fbbb3;
+}
 
-      #taskbar button.active {
-        border: 1px solid #${config.colorScheme.colors.base02};
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        animation: colored-gradient 10s ease infinite;
-      }
+#backlight {
+    margin: 0;
+    padding: 0 0.5em 0 0.4em;
+    color: #d8a657;
+}
 
-      /* #taskbar button.fullscreen {} */
+#cpu {
+    margin: 0;
+    padding: 0 0.1em 0 0.1em;
+    color: #a9b665;
+}
 
-      /* -------------------------------------------------------------------------------- */
+#network {
+    margin: 0;
+    padding: 0 0.4em 0 0.5em;
+    color: #7fbbb3;
+}
 
-      #custom-launcher,
-      /* #window, */
-      #submap
-      #mode,
-      /* #tray, */
-      #cpu,
-      #memory,
-      #backlight,
-      #window  { background-color: #${config.colorScheme.colors.base00}; }
-      #pulseaudio.audio { background-color: #${config.colorScheme.colors.base00}; }
-      #pulseaudio.microphone,
-      #network { background-color: #${config.colorScheme.colors.base00}; }
-      #bluetooth  { background-color: #${config.colorScheme.colors.base00}; }
-      #battery  { background-color: #${config.colorScheme.colors.base00}; }
-      #clock { background-color: #${config.colorScheme.colors.base00}; }
-      #custom-powermenu,
+#custom-cycle_wall {
+    margin: 0;
+    padding: 0 0.5em;
+    color: #e67e80;
+}
 
-      #custom-notification {
-        background-color: transparent;
-        color: #${config.colorScheme.colors.base05};
-        padding: 1px 8px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 2px;
-        margin-right: 2px;
-        border-radius: 20px;
-        transition: all 0.3s ease;
-      }
+#tray {
+    margin: 0;
+    padding-right: 10px;
+    color: #d3869b;
+    border-radius: 0 10px 10px 0;
+}
 
-      #submap {
-        background-color: #${config.colorScheme.colors.base00};
-        border: 0;
-      }
+#battery {
+    margin: 0;
+    padding: 0 0.5em 0 0.8em;
+    color: #a9b665;
+}
 
-      /* If workspaces is the leftmost module, omit left margin */
-      /* .modules-left > widget:first-child > #workspaces, */
-      .modules-left > widget:first-child > #workspaces button,
-      .modules-left > widget:first-child > #taskbar button,
-      .modules-left > widget:first-child > #custom-launcher,
-      .modules-left > widget:first-child > #window,
-      .modules-left > widget:first-child > #tray,
-      .modules-left > widget:first-child > #cpu,
-      .modules-left > widget:first-child > #memory,
-      .modules-left > widget:first-child > #backlight,
-      .modules-left > widget:first-child > #pulseaudio.audio,
-      .modules-left > widget:first-child > #pulseaudio.microphone,
-      .modules-left > widget:first-child > #network,
-      .modules-left > widget:first-child > #bluetooth,
-      .modules-left > widget:first-child > #battery,
-      .modules-left > widget:first-child > #clock,
-      .modules-left > widget:first-child > #custom-powermenu,
-      .modules-left > widget:first-child > #custom-notification {
-        margin-left: 5px;
-      }
+#disk {
+    margin: 0;
+    padding: 0 0.1em 0 0.1em;
+    color: #a9b665;
+}
 
-      /* If workspaces is the rightmost module, omit right margin */
-      /* .modules-right > widget:last-child > #workspaces, */
-      /* .modules-right > widget:last-child > #workspaces, */
-      .modules-right > widget:last-child > #workspaces button,
-      .modules-right > widget:last-child > #taskbar button,
-      .modules-right > widget:last-child > #custom-launcher,
-      .modules-right > widget:last-child > #window,
-      .modules-right > widget:last-child > #tray,
-      .modules-right > widget:last-child > #cpu,
-      .modules-right > widget:last-child > #memory,
-      .modules-right > widget:last-child > #backlight,
-      .modules-right > widget:last-child > #pulseaudio.audio,
-      .modules-right > widget:last-child > #pulseaudio.microphone,
-      .modules-right > widget:last-child > #network,
-      .modules-right > widget:last-child > #bluetooth,
-      .modules-right > widget:last-child > #battery,
-      .modules-right > widget:last-child > #clock,
-      .modules-right > widget:last-child > #custom-powermenu,
-      .modules-right > widget:last-child > #custom-notification {
-        margin-right: 5px;
-      }
-
-      /* -------------------------------------------------------------------------------- */
-
-      #tray {
-        background-color: #${config.colorScheme.colors.base00};
-        padding: 1px 8px;
-      }
-      #tray > .passive {
-        -gtk-icon-effect: dim;
-      }
-      #tray > .needs-attention {
-        -gtk-icon-effect: highlight;
-        background-color: #${config.colorScheme.colors.base0F};
-      }
-
-    '';
-  }
+#window {
+    color: #ebdbb2;
+    margin-left: 0rem;
+    margin-right: 1rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.818);
+    transition: all 0.1s ease-in-out;
+    border-radius: 0px;
+    font-size: 15px;
+}
+ '';
+}

@@ -179,7 +179,7 @@ in
       bind = $mainMod, Return, exec, kitty
       bind = ALT, Return, exec, kitty --title float_kitty
       bind = $mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'
-      bind = $mainMod, B, exec, firefox
+      bind = $mainMod, W, exec, firefox
       bind = $mainMod, Q, killactive,
       bind = $mainMod, F, fullscreen, 0
       bind = $mainMod SHIFT, F, fullscreen, 1
@@ -193,7 +193,7 @@ in
       bind = $mainMod SHIFT, B, exec, pkill -SIGUSR1 .waybar-wrapped
       bind = $mainMod, C ,exec, hyprpicker -a
       bind = $mainMod, G,exec, $HOME/.local/bin/toggle_layout
-      bind = $mainMod, W,exec, pkill wofi || wallpaper-picker
+      bind = $mainMod, B,exec, pkill wofi || wallpaper-picker
       
       # screenshot
       bind = $mainMod, Print, exec, grimblast --notify --cursor save area ~/Pictures/$(date +'%Y-%m-%d-At-%Ih%Mm%Ss').png

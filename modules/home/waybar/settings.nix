@@ -2,176 +2,146 @@
 {
   home.file.".config/waybar/config.jsonc" = {
     text = ''
-      {
-        "layer": "top",
-        // "output": [],
-        "position": "top",
-        "height": 36,
-        // "width": 900,
-        // "margin": "",
-        "margin-top": 10,
-        "margin-bottom": 0,
-        "margin-left": 10,
-        "margin-right": 10,
-        "spacing": 10,
-        "gtk-layer-shell": true,
-        "border-radius": 10,
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 40,
+  "width": 1900,
+  "margin-bottom": 5,
+  "spacing": 0,
+  "fixed-center": true,
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
 
-        "clock": {
-          "interval": 1,
-          "format": " {:%I:%M} ",
-          "format-alt": " {:%A, %d %B} ",
-          // "on-click": "gnome-calendar",
-          "tooltip": true,
-          "tooltip-format": "{calendar}",
-          "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3,
-            "format": {
-              "today": "<span color='#${config.colorScheme.colors.base0F}'>{}</span>"
-            }
-          }
-        },
-        "modules-left": [
-          "clock",
-          "hyprland/workspaces",
-          "custom/notification"
-        ],
-        "modules-center": [
-          "hyprland/submap",
-          "hyprland/window"
-        ],
-        "modules-right": [
+  "modules-left": ["hyprland/workspaces"],
+  "modules-right": [
+    "memory",
+    "cpu",
+    "disk",
+    "battery",
+    "wireplumber",
+    "network",
+    "tray"
+  ],
+  "modules-center": ["clock"],
 
-          "cpu",
-          "memory",
-          // "network#wlp2s0",
-          // "bluetooth",
-          "backlight",
-          // "pulseaudio#microphone",
-          "pulseaudio#audio",
-          "battery",
-
-          "tray"
-        ],
-
-        "hyprland/workspaces": {
-          "format": " {icon} ",
-          "format-icons": {
-            "default": "󰄰",
-            "active": ""
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+        "1": "",
+        "2": "󰈹",
+        "3": "",
+        "4": "",
+        "5": "󰭻",
+        "6": "󰝚",
+        "7": "󱁤",
+        "8": "󰇚",
+        "9": "9",
+        "10": "10"
+    },
+    "format-active": "{icon}",
+    "on-click": "activate"
+  },
+  "hyprland/window": {
+    "format": " {}",
+    "separate-outputs": false,
+    "max-length": 25
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 4,
+    "show-passive-items": false,
+    "max-length": 6,
+    "min-length": 6,
+    "ignore-list": ["network"]
+  },
+  "clock": {
+          "format": "{:%H:%M}",
+          "format-alt": "{:%A, %B %d, %Y (%R)}   ",
+          "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+          "on-scroll": {
+                      "calendar": 1
+                       }
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "{icon0}{icon1}{icon2}{icon3}",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "max-length": 25,
+    "min-length": 6
+  },
+  "memory": {
+    "format": "  {percentage}%",
+    "interval": 1,
+    "max-length": 25,
+    "min-length": 6
+  },
+  "backlight": {
+    "format": "{icon}{percent}%",
+    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "],
+    "on-scroll-up": "brightnessctl set 30+",
+    "on-scroll-down": "brightnessctl set 30-",
+    "max-length": 25,
+    "min-length": 6
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged":  "  {capacity}%",
+    //"format-alt": "{time} {icon}",
+    "format-icons": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+              ],
+  },
+  "network": {
+            "interval": 1,
+            "interface": "wlo1",
+            "format-icons": [
+              "󰤯",
+              "󰤟",
+              "󰤢",
+              "󰤥",
+              "󰤨"
+            ],
+            "format-wifi": " {icon}  ", // added multiple spaces to the right, was not aligning center correctly, still is not :(
+            "format-disconnected": "󰤮",
+            "on-click": "iwgtk",
+            "tooltip": true,
+            "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}"
           },
-          "on-click": "activate"
-        },
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "path": "/",
+    "tooltip": true,
+    "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
+  },
 
-        "hyprland/submap": {
-          "format": "{}",
-          "tooltip": false
-        },
-
-        "hyprland/window": {
-          "format": " {} ",
-          "separate-outputs": false
-        },
-
-        "tray": {
-          "icon-size": 15,
-          "spacing": 10
-        },
-
-        "cpu": {
-          "format": " {usage}%",
-          "on-click": "",
-          "tooltip": false
-        },
-
-        "memory": {
-          "format": "󰍛 {used:0.1f}GB ({percentage}%) / {total:0.1f}GB",
-          "on-click": "",
-          "tooltip": false
-        },
-
-        "backlight": {
-          "format": " {icon} {percent} ",
-          "format-icons": [
-            "󰃟"
-          ],
-          "on-scroll-up": "brightnessctl set +1%",
-          "on-scroll-down": "brightnessctl set 1%-",
-          "on-click": "brightnessctl set 0",
-          "tooltip": false
-        },
-
-      	"pulseaudio#audio": {
-      		"format": " {icon} {volume:2} ",
-      		"format-bluetooth": " {icon} {volume}%  ",
-      		"format-muted": " {icon} Muted ",
-      		"format-icons": {
-      			"headphones": "",
-      			"default": [
-      				"",
-      				""
-      			]
-      		},
-      		"scroll-step": 5,
-      		"on-click": "pavucontrol",
-      		"on-click-right": "pamixer -t"
-      	},
-
-        "network#wlp2s0": {
-          "interval": 1,
-          "interface": "wlan0",
-          "format-icons": [
-            "󰤯",
-            "󰤟",
-            "󰤢",
-            "󰤥",
-            "󰤨"
-          ],
-          "format-wifi": " {icon}  ", // added multiple spaces to the right, was not aligning center correctly, still is not :(
-          "format-disconnected": "󰤮",
-          "on-click": "iwgtk",
-          "tooltip": true,
-          "tooltip-format": "󰢮 {ifname}\n󰩟 {ipaddr}/{cidr}\n{icon} {essid}\n󱑽 {signalStrength}% {signaldBm} dBm {frequency} MHz\n󰞒 {bandwidthDownBytes}\n󰞕 {bandwidthUpBytes}"
-        },
-
-        "bluetooth": {
-          "format-disabled": " 󰂲 ",
-          "format-off": " 󰂲 ",
-          "format-on": " 󰂯 ",
-          "format-connected": " 󰂯 ",
-          "format-connected-battery": " 󰂯 ",
-          "tooltip-format-connected": " {device_alias} 󰂄{device_battery_percentage} ",
-          "on-click": "blueberry",
-          "tooltip": true
-        },
-
-        "battery": {
-          "states": {
-            "warning": 20,
-            "critical": 10
-          },
-
-          "format": " {icon} {capacity} ",
-          "format-charging": " 󰂄 {capacity} ",
-          "format-plugged": " 󱘖 {capacity} ",
-          "format-icons": [
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-          ],
-          "on-click": "",
-          "tooltip": false
-        }
-      }
-
-    '';
-  };
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "max-volume": 100.0,
+    "format-icons": ["", "", ""],
+    "format-muted": "",
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "max-length": 25
+  }
+}
+'';
+};
 }
