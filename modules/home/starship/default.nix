@@ -1,4 +1,4 @@
-{ lib, inputs, ... }: 
+{ lib, inputs, config, ... }: 
 {
   programs.starship = {
     enable = true;
@@ -11,13 +11,13 @@
       right_format = "$cmd_duration";
       
       directory = {
-        format = "[ ](bold #89b4fa)[ $path ]($style)";
-        style = "bold #b4befe";
+        format = "[ ](bold #${config.colorscheme.colors.base0D})[ $path ]($style)";
+        style = "bold #${config.colorscheme.colors.base07}";
       };
 
       character = {
-        success_symbol = "[ ](bold #89b4fa)[ ➜](bold green)";
-        error_symbol = "[ ](bold #89b4fa)[ ➜](bold red)";
+        success_symbol = "[ ](bold #${config.colorscheme.colors.base0D})[ ➜](bold green)";
+        error_symbol = "[ ](bold #${config.colorscheme.colors.base0D})[ ➜](bold red)";
         # error_symbol = "[ ](bold #89dceb)[ ✗](bold red)";
       };
 
@@ -36,6 +36,6 @@
       # };
 
       #palette = "catppuccin_mocha";
-    } // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/palettes/mocha.toml");
+    }; #// builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/palettes/mocha.toml");
   };
 }

@@ -9,7 +9,8 @@
     ++ [(import ./btop)]
     ++ [(import ./bat)]
     ++ [(import ./cava)]
-    ++ [(import ./kitty)]
+    ++ [(import ./alacritty)]
+#    ++ [(import ./kitty)]
     ++ [(import ./micro)]            # nano replacement
 #    ++ [(import ./audacious)]       # music player
 #    ++ [(import ./rider)]           # C# JetBrain editor
@@ -25,6 +26,6 @@
     ++ [(import ./package)]
     ++ [nix-colors.homeManagerModules.default];
 
-    colorScheme = nix-colors.colorSchemes.kanagawa;
+    colorScheme = nix-colors.colorSchemes.tokyodark-terminal;
 
 }

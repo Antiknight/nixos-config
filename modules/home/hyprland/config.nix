@@ -90,7 +90,7 @@
           gaps_in = 8
           gaps_out = 15
           border_size = 3
-          col.active_border = $ca $c8 00deg 
+          col.active_border = $cd $cb 00deg 
           col.inactive_border = $c2 $c1 75deg
 #          col.active_border = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
 #          col.inactive_border = rgba(86aaeccc) rgba(93cee9cc) 45deg
@@ -99,9 +99,9 @@
       }
 
       group {
-          col.border_active = $ca $c8 00deg
+          col.border_active = $cd $cb 00deg
           col.border_inactive = $c2 $c1 75deg
-          col.border_locked_active = $ca $c8 00deg
+          col.border_locked_active = $cd $cb 00deg
           col.border_locked_inactive = $c2 $c1 75deg
       }
 
@@ -165,9 +165,9 @@
       bind = $mainMod, F1, exec, show-keybinds
 
       # keybindings
-      bind = $mainMod, Return, exec, kitty
-      bind = ALT, Return, exec, kitty --title float_kitty
-      bind = $mainMod SHIFT, Return, exec, kitty --start-as=fullscreen -o 'font_size=16'
+      bind = $mainMod, Return, exec, alacritty
+      bind = ALT, Return, exec, alacritty --title float_alacritty
+      bind = $mainMod SHIFT, Return, exec, alacritty --start-as=fullscreen -o 'font_size=16'
       bind = $mainMod, W, exec, firefox
       bind = $mainMod, Q, killactive,
       bind = $mainMod, F, fullscreen, 0
@@ -281,9 +281,9 @@
       windowrulev2 = idleinhibit focus, class:^(mpv)$
       windowrulev2 = idleinhibit fullscreen, class:^(firefox)$
     
-      windowrule = float,title:^(float_kitty)$
-      windowrule = center,title:^(float_kitty)$
-      windowrule = size 950 600,title:^(float_kitty)$
+      windowrule = float,title:^(float_alacritty)$
+      windowrule = center,title:^(float_alacritty)$
+      windowrule = size 950 600,title:^(float_alacritty)$
 
       windowrulev2 = float,class:^(pavucontrol)$
       windowrulev2 = float,class:^(SoundWireServer)$
