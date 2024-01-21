@@ -18,7 +18,7 @@ window#waybar {
 
 .modules-right {
     font-size: 10px;
-    background-color: #1b1a1d;
+    background-color: #${config.colorScheme.colors.base00};
     border-radius: 10px;
     padding: 0;
     margin: 5px 0 5px 0;
@@ -26,7 +26,7 @@ window#waybar {
 
 .modules-left {
     margin-left: 0.1rem;
-    background-color: #1b1a1d;
+    background-color: #${config.colorScheme.colors.base00};
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 1px 0px;
@@ -36,16 +36,18 @@ window#waybar {
 .modules-center {
     padding: 0px;
     margin: 5px 0 5px 0;
+    border-radius: 10px;
+    background-color: #${config.colorScheme.colors.base00};
 }
 
 tooltip {
-    background: #1b1a1d;
+    background: #${config.colorScheme.colors.base00};
     border-radius: 10px;
 }
 
 tooltip label {
-    color: #ebdbb2;
-    background-color: #1b1a1d;
+    color: #${config.colorScheme.colors.base05};
+    background-color: #${config.colorScheme.colors.base00};
     border-radius: 10px;
 }
 
@@ -61,7 +63,8 @@ tooltip * {
 
 #workspaces button {
     margin: 0;
-    color: #c3b28b;
+    background-color: #${config.colorScheme.colors.base00};
+    color: #${config.colorScheme.colors.base05};
     font-weight: bolder;
     font-style: normal;
     margin: 0.2rem 0.1rem;
@@ -71,28 +74,28 @@ tooltip * {
 #workspaces button:hover {
     box-shadow: inherit;
     text-shadow: inherit;
-    background-color: #c3b28b;
-    color: #1b1a1d;
+    background-color: #${config.colorScheme.colors.base04};
+    color: #${config.colorScheme.colors.base09};
     border-radius: 10px;
 }
 
 #workspaces button.active {
-    color: #313036;
-    background-color: rgba(166, 145, 96, 0.9);
+    color: #${config.colorScheme.colors.base09};
+    background-color: #${config.colorScheme.colors.base02};
     transition: all 0.1s ease-in-out;
     border-radius: 20px;
 }
 
 #clock {
     font-family: 'Iosevka Nerd Font';
-    color: rgb(195, 178, 139);
-    background-color: #1b1a1d;
+    color: #${config.colorScheme.colors.base05};
+    background-color: #${config.colorScheme.colors.base00};
     padding: 0 1.5em 0 1.5em;
     border-radius: 10px 10px 10px 10px;
 }
 
 #memory {
-    color: #a9b665;
+    color: #${config.colorScheme.colors.base05};
     padding: 0 0.3em 0 0.5em;
     border-radius: 10px 0 0 10px;
 }
@@ -101,54 +104,49 @@ tooltip * {
 #wireplumber.muted {
     margin: 0;
     padding: 0 0.5em 0 0.4em;
-    color: #7fbbb3;
+    color: #${config.colorScheme.colors.base05};
 }
 
 #backlight {
     margin: 0;
     padding: 0 0.5em 0 0.4em;
-    color: #d8a657;
+    color: #${config.colorScheme.colors.base05};
 }
 
 #cpu {
     margin: 0;
     padding: 0 0.1em 0 0.1em;
-    color: #a9b665;
+    color: #${config.colorScheme.colors.base05};
 }
 
 #network {
     margin: 0;
     padding: 0 0.4em 0 0.5em;
-    color: #7fbbb3;
+    color: #${config.colorScheme.colors.base05};
 }
 
-#custom-cycle_wall {
-    margin: 0;
-    padding: 0 0.5em;
-    color: #e67e80;
-}
 
 #tray {
     margin: 0;
     padding-right: 10px;
-    color: #d3869b;
+    color: #${config.colorScheme.colors.base05};
     border-radius: 0 10px 10px 0;
 }
 
 #battery {
     margin: 0;
     padding: 0 0.5em 0 0.8em;
-    color: #a9b665;
+    color: #${config.colorScheme.colors.base05};
 }
 
 #disk {
     margin: 0;
     padding: 0 0.1em 0 0.1em;
-    color: #a9b665;
+    color: #${config.colorScheme.colors.base06};
 }
 
 #window {
-    color: #ebdbb2;
+    color: #${config.colorScheme.colors.base05};
     margin-left: 0rem;
     margin-right: 1rem;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.818);

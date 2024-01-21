@@ -14,7 +14,7 @@
         firefox-color
         stylus
       ];
-#      extraConfig = builtins.readFile ./user.js;
+      extraConfig = builtins.readFile ./user.js;
     };
   };
 }

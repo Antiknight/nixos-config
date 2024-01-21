@@ -1,9 +1,4 @@
 { pkgs, inputs, username, nix-colors, ...}:
-let
-  packages = with pkgs; [
-    fish
-  ];
-in
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {

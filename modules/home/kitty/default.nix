@@ -1,9 +1,9 @@
-{ pkgs, config, nix-colors, ... }: 
+{ pkgs, config, ... }: 
 {
    programs.kitty = {
     enable = true;
 
-#    theme = "Catppuccin-Mocha";
+#    theme = "kanagawa";
     
     font = {
       name = "JetBrainsMono Nerd Font";
@@ -11,12 +11,12 @@
     };
 
     settings = {
-      active_tab_foreground = "#${config.colorScheme.colors.base05}";
-      active_tab_background = "#${config.colorScheme.colors.base00}";
+#      active_tab_foreground = "#${config.colorScheme.colors.base05}";
+#      active_tab_background = "#${config.colorScheme.colors.base00}";
 
-      foreground = "#${config.colorScheme.colors.base05}";
-      background = "#${config.colorScheme.colors.base00}";
-      url_color = "#${config.colorScheme.colors.base0E}";
+#      foreground = "#${config.colorScheme.colors.base05}";
+#      background = "#${config.colorScheme.colors.base00}";
+#      url_color = "#${config.colorScheme.colors.base0E}";
 
 
     

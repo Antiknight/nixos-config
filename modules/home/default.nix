@@ -25,6 +25,6 @@
     ++ [(import ./package)]
     ++ [nix-colors.homeManagerModules.default];
 
-    colorScheme = nix-colors.colorSchemes.solarflare;
+    colorScheme = nix-colors.colorSchemes.kanagawa;
 
 }

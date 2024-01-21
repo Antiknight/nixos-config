@@ -20,6 +20,7 @@
     "cpu",
     "disk",
     "battery",
+    "backlight",
     "wireplumber",
     "network",
     "tray"

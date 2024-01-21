@@ -1,8 +1,4 @@
 {config, nix-colors, ...}:
-let
-  color = (import ../../variables/colors.nix);
-  window_manager = (import ../../variables/window_manager.nix);
-in
 {
   wayland.windowManager.hyprland = {
     extraConfig = "
@@ -46,19 +42,9 @@ in
       #█▀ █▀█ █▀▀ █▀▀ █ ▄▀█ █░░
       #▄█ █▀▀ ██▄ █▄▄ █ █▀█ █▄▄
 
-      exec = gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
-      exec = gsettings set org.gnome.desktop.interface gtk-theme 'Decay-Green'
-      exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-      
-      decoration {
-          dim_special = 0.3
-          blur {
-              special = true
-          }
-      }
-
-      
-      
+#      exec = gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-green'
+#      exec = gsettings set org.gnome.desktop.interface gtk-theme 'Decay-Green'
+#      exec = gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
       input {
         kb_layout = fo
@@ -101,20 +87,22 @@ in
       $cf = rgba(${config.colorscheme.colors.base0F}FF)
 
       general {
-          gaps_in = 3
-          gaps_out = 8
-          border_size = 2
-          col.active_border = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
-          col.inactive_border = rgba(86aaeccc) rgba(93cee9cc) 45deg
+          gaps_in = 8
+          gaps_out = 15
+          border_size = 3
+          col.active_border = $ca $c8 00deg 
+          col.inactive_border = $c2 $c1 75deg
+#          col.active_border = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
+#          col.inactive_border = rgba(86aaeccc) rgba(93cee9cc) 45deg
           layout = dwindle
           resize_on_border = true
       }
 
       group {
-          col.border_active = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
-          col.border_inactive = rgba(86aaeccc) rgba(93cee9cc) 45deg
-          col.border_locked_active = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
-          col.border_locked_inactive = rgba(86aaeccc) rgba(93cee9cc) 45deg
+          col.border_active = $ca $c8 00deg
+          col.border_inactive = $c2 $c1 75deg
+          col.border_locked_active = $ca $c8 00deg
+          col.border_locked_inactive = $c2 $c1 75deg
       }
 
       xwayland {
@@ -140,33 +128,34 @@ in
 
       decoration {
           rounding = 10
-          drop_shadow = false
-      
-          blur {
-              enabled = yes
-              size = 5
-              passes = 4
-              new_optimizations = on
-              ignore_opacity = on
-              xray = true
+          drop_shadow = true
+          shadow_range = 100
+          shadow_render_power = 5
+          col.shadow = 0x33000000
+          col.shadow_inactive = 0x22000000
+          blur{
+              blur:enabled = true
+              blur:new_optimizations = true
+              blur:size = 9
+              blur:passes = 3
+              blur:contrast = 1
+              blur:brightness = 0.59
           }
       }
 
-
       animations {
-        enabled = yes
-        bezier = wind, 0.05, 0.9, 0.1, 1.05
-        bezier = winIn, 0.1, 1.1, 0.1, 1.1
-        bezier = winOut, 0.3, -0.3, 0, 1
-        bezier = liner, 1, 1, 1, 1
-        animation = windows, 1, 6, wind, slide
-        animation = windowsIn, 1, 6, winIn, slide
-        animation = windowsOut, 1, 5, winOut, slide
-        animation = windowsMove, 1, 5, wind, slide
-        animation = border, 1, 1, liner
-        animation = borderangle, 1, 30, liner, loop
-        animation = fade, 1, 10, default
-        animation = workspaces, 1, 5, wind
+          enabled=1
+          bezier=overshot,0.05,0.9,0.1,1.00
+          
+          animation=windows,1,4,overshot, popin 75%
+          animation=windowsOut,0,5,overshot, popin 75%
+          animation=border,1,5,overshot
+          animation=fade,1,3,overshot
+          animation=fadeOut,0,5,overshot
+          animation=fadeIn,1,4,overshot
+          animation=fadeSwitch,0,3,overshot
+          animation=fadeShadow,0,3,overshot
+          animation=workspaces,1,5,overshot,slide
       }
 
 
