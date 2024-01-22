@@ -12,7 +12,7 @@
     initExtraFirst = ''
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
-      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=${config.colorscheme.colors.base0E}'
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=${config.colorscheme.colors.base09}'
     '';
     shellAliases = {
       # record = "wf-recorder --audio=alsa_output.pci-0000_08_00.6.analog-stereo.monitor -f $HOME/Videos/$(date +'%Y%m%d%H%M%S_1.mp4')";

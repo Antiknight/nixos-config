@@ -2,7 +2,7 @@
 {
   programs.waybar.style = ''
 * {
-    font-family: 'Iosevka Nerd Font';
+    font-family: 'JetBrainsMono Nerd Font';
     font-size: 13px;
   /*font-weight: thin;*/
     border-radius: 0px;
@@ -46,7 +46,7 @@ tooltip {
 }
 
 tooltip label {
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
     background-color: #${config.colorScheme.colors.base00};
     border-radius: 10px;
 }
@@ -64,7 +64,7 @@ tooltip * {
 #workspaces button {
     margin: 0;
     background-color: #${config.colorScheme.colors.base00};
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
     font-weight: bolder;
     font-style: normal;
     margin: 0.2rem 0.1rem;
@@ -88,14 +88,14 @@ tooltip * {
 
 #clock {
     font-family: 'Iosevka Nerd Font';
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
     background-color: #${config.colorScheme.colors.base00};
     padding: 0 1.5em 0 1.5em;
     border-radius: 10px 10px 10px 10px;
 }
 
 #memory {
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
     padding: 0 0.3em 0 0.5em;
     border-radius: 10px 0 0 10px;
 }
@@ -104,39 +104,39 @@ tooltip * {
 #wireplumber.muted {
     margin: 0;
     padding: 0 0.5em 0 0.4em;
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
 }
 
 #backlight {
     margin: 0;
     padding: 0 0.5em 0 0.4em;
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
 }
 
 #cpu {
     margin: 0;
     padding: 0 0.1em 0 0.1em;
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
 }
 
 #network {
     margin: 0;
     padding: 0 0.4em 0 0.5em;
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
 }
 
 
 #tray {
     margin: 0;
     padding-right: 10px;
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
     border-radius: 0 10px 10px 0;
 }
 
 #battery {
     margin: 0;
     padding: 0 0.5em 0 0.8em;
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
 }
 
 #disk {
@@ -146,7 +146,7 @@ tooltip * {
 }
 
 #window {
-    color: #${config.colorScheme.colors.base05};
+    color: #${config.colorScheme.colors.base06};
     margin-left: 0rem;
     margin-right: 1rem;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.818);

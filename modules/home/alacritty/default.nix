@@ -8,7 +8,7 @@
     	dynamic_padding = true;
     	padding = {
     	  x = 10;
-    	  y = 0;
+    	  y = 2;
     	};
     };
     font = {
