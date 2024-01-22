@@ -41,7 +41,8 @@
     pamixer                           # pulseaudio command line mixer
     pavucontrol                       # pulseaudio volume controle (GUI)
     playerctl                         # controller for media players
-#    qalculate-gtk                     # calculator
+    brightnessctl
+#    xfce.xfce4-power-manager
     unzip
     wget
     xdg-utils

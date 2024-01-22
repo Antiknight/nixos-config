@@ -234,6 +234,8 @@
       bind = $mainMod ALT, down, moveactive, 0 80
       
       # media and volume controls
+      bind = ,XF86MonBrightnessDown, exec, brightnessctl set 5%-
+      bind = ,XF86MonBrightnessUp, exec, brightnessctl set +5%
       bind = ,XF86AudioRaiseVolume,exec, pamixer -i 2
       bind = ,XF86AudioLowerVolume,exec, pamixer -d 2
       bind = ,XF86AudioMute,exec, pamixer -t
