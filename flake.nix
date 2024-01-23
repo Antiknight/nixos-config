@@ -4,26 +4,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-  
     hypr-contrib.url = "github:hyprwm/contrib";
     hyprpicker.url = "github:hyprwm/hyprpicker";
-  
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-  
-#    nix-gaming.url = "github:fufexan/nix-gaming";
-  
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-#    nix-colors.url = "github:misterio77/nix-colors";
-
     nix-colors = {
     	url = "github:misterio77/nix-colors";
     };
@@ -44,11 +35,11 @@
 
   outputs = { nixpkgs, self, nix-colors, ...} @ inputs:
     let
-      selfPkgs = import ./pkgs;
+#      selfPkgs = import ./pkgs;
       username = "leo";
     in
     {
-      overlays.default = selfPkgs.overlay;
+#      overlays.default = selfPkgs.overlay;
       nixosConfigurations = import ./modules/core/default.nix {
         inherit self nixpkgs inputs username nix-colors;
       };
