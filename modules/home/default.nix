@@ -11,7 +11,6 @@
     ++ [(import ./alacritty)]
 #    ++ [(import ./kitty)]
     ++ [(import ./micro)]            # nano replacement
-#    ++ [(import ./audacious)]       # music player
     ++ [(import ./discord)]         # discord with catppuccin theme
     ++ [(import ./swaylock)]
     ++ [(import ./wofi)]
