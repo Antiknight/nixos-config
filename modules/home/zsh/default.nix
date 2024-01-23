@@ -12,6 +12,7 @@
     initExtraFirst = ''
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
+      AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=cyan"
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=${config.colorscheme.colors.base09}'
     '';
     shellAliases = {
@@ -22,7 +23,6 @@
       vim = "nvim";
       cat = "bat";
       nano = "micro";
-#      icat = "kitten icat";
       dsize = "du -hs";
       findw = "grep -rl";
 
@@ -58,7 +58,7 @@
       gcoe = "git config user.email";
       gcon = "git config user.name";
 
-      g = "lazygit";
+#      g = "lazygit";
 
       # python
       piv = "python -m venv .venv";

@@ -4,7 +4,7 @@
     enable = true;
     
     settings = {
-      "colorscheme" = "catppuccin-mocha";
+      "colorscheme" = "simple";
     };
   };
 

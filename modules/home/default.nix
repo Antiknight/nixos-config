@@ -2,7 +2,6 @@
   imports =
        [(import ./waybar)]
     ++ [(import ./firefox)]
-#    ++ [(import ./vscodium)]
     ++ [(import ./hyprland)]
 #    ++ [(import ./gaming)]
     ++ [(import ./git)]
@@ -13,7 +12,6 @@
 #    ++ [(import ./kitty)]
     ++ [(import ./micro)]            # nano replacement
 #    ++ [(import ./audacious)]       # music player
-#    ++ [(import ./rider)]           # C# JetBrain editor
     ++ [(import ./discord)]         # discord with catppuccin theme
     ++ [(import ./swaylock)]
     ++ [(import ./wofi)]
