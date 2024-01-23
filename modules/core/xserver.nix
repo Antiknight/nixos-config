@@ -9,9 +9,6 @@
     };
     libinput = {
       enable = true;
-      # mouse = {
-      #   accelProfile = "flat";
-      # };
     };
   };
   # To prevent getting stuck at shutdown
