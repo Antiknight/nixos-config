@@ -1,8 +1,8 @@
-/* Mocha Mauve */
-@define-color accent #cba6f7;
-@define-color txt #cad3f5;
-@define-color bg #24273a;
-@define-color bg2 #494d64;
+/* Tokyo Night */
+@define-color accent #7aa2f7;
+@define-color txt #a9b1d6;
+@define-color bg #1a1b26;
+@define-color bg2 #15161e;
 
  * {
     font-family: 'JetBrains Mono Nerd Font', monospace;
