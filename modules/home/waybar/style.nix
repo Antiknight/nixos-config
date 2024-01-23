@@ -88,14 +88,14 @@ tooltip * {
 
 #clock {
     font-family: 'Iosevka Nerd Font';
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base09};
     background-color: #${config.colorScheme.colors.base00};
     padding: 0 1.5em 0 1.5em;
     border-radius: 10px 10px 10px 10px;
 }
 
 #memory {
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base0E};
     padding: 0 0.3em 0 0.5em;
     border-radius: 10px 0 0 10px;
 }
@@ -104,19 +104,19 @@ tooltip * {
 #wireplumber.muted {
     margin: 0;
     padding: 0 0.5em 0 0.4em;
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base0D};
 }
 
 #backlight {
     margin: 0;
     padding: 0 0.5em 0 0.4em;
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base0A};
 }
 
 #cpu {
     margin: 0;
     padding: 0 0.1em 0 0.1em;
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base08};
 }
 
 #network {
@@ -136,13 +136,13 @@ tooltip * {
 #battery {
     margin: 0;
     padding: 0 0.5em 0 0.8em;
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base0B};
 }
 
 #disk {
     margin: 0;
     padding: 0 0.1em 0 0.1em;
-    color: #${config.colorScheme.colors.base06};
+    color: #${config.colorScheme.colors.base0C};
 }
 
 #window {

@@ -7,7 +7,7 @@
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 40,
   "width": 1900,
-  "margin-bottom": 5,
+  "margin-bottom": 3,
   "spacing": 0,
   "fixed-center": true,
   "exclusive": true,
@@ -22,7 +22,6 @@
     "battery",
     "backlight",
     "wireplumber",
-    "network",
     "tray"
   ],
   "modules-center": ["clock"],
