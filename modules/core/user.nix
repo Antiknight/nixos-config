@@ -1,10 +1,10 @@
-{ pkgs, inputs, username, nix-colors, ...}:
+{ pkgs, inputs, username, nix-colors, nixvim, ...}:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit inputs username nix-colors; };
+    extraSpecialArgs = { inherit inputs username nix-colors nixvim; };
     users.${username} = {
       imports = [ (import ./../home) ];
       home.username = "${username}";

@@ -16,7 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors = {
-    	url = "github:misterio77/nix-colors";
+      url = "github:misterio77/nix-colors";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     catppuccin-bat = {
@@ -33,7 +38,7 @@
     };
   };
 
-  outputs = { nixpkgs, self, nix-colors, ...} @ inputs:
+  outputs = { nixpkgs, self, nix-colors, nixvim, ...} @ inputs:
     let
 #      selfPkgs = import ./pkgs;
       username = "leo";
@@ -41,7 +46,7 @@
     {
 #      overlays.default = selfPkgs.overlay;
       nixosConfigurations = import ./modules/core/default.nix {
-        inherit self nixpkgs inputs username nix-colors;
+        inherit self nixpkgs inputs username nix-colors nixvim;
       };
     };
 }

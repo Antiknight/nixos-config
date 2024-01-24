@@ -1,4 +1,6 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
-  programs.neovim.enable = true;
+  programs.nixvim = {
+  	enable = true;
+  };
 }

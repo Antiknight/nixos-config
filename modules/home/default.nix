@@ -1,4 +1,4 @@
-{inputs, username, config, nix-colors, ...}: {
+{inputs, username, config, nix-colors, nixvim, ...}: {
   imports =
        [(import ./waybar)]
     ++ [(import ./firefox)]
@@ -20,6 +20,7 @@
     ++ [(import ./scripts)]         # personal scripts
     ++ [(import ./starship)]
     ++ [(import ./nvim)]
+    ++ [nixvim.homeManagerModules.nixvim]
     ++ [(import ./package)]
     ++ [nix-colors.homeManagerModules.default];
 
