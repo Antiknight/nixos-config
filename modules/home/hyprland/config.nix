@@ -242,7 +242,7 @@
       bind = ,XF86AudioPlay,exec, playerctl play-pause
       bind = ,XF86AudioNext,exec, playerctl next
       bind = ,XF86AudioPrev,exec, playerctl previous
-      bind = , XF86AudioStop, exec, playerctl stop
+      bind = ,XF86AudioStop, exec, playerctl stop
       bind = $mainMod, mouse_down, workspace, e-1
       bind = $mainMod, mouse_up, workspace, e+1
       
