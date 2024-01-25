@@ -30,6 +30,7 @@
       tree = "eza --icons --tree --group-directories-first";
 
       # Nixos
+      flake-rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
 #      cdnix = "cd ~/nixos-config && codium ~/nixos-config";
 #      nix-shell = "nix-shell --run zsh";
 #      nix-switch = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
