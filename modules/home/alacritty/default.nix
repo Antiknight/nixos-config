@@ -5,21 +5,21 @@
   programs.alacritty.settings = {
     window = {
     	decorations = "none";
+      opacity = 0.9;
     	dynamic_padding = true;
     	padding = {
     	  x = 10;
     	  y = 2;
     	};
     };
+    mouse.hide_when_typing = true;
     font = {
     	normal.family = "JetBrainsMono Nerd Font";
     	bold.family = "JetBrainsMono Nerd Font";
     	italic.family = "JetBrainsMono Nerd Font";
     	size = 14;
     };
-
-    window.opacity = 0.9;
-    
+ 
     colors = with config.colorScheme.colors; {
       bright = {
         black = "0x${base00}";
